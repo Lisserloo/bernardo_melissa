@@ -1,0 +1,14 @@
+---
+title: "bernardo_melissa"
+author: "owner"
+format: html
+editor: visual
+---
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(readr)
+
+
+```
