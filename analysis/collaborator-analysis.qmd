@@ -1,0 +1,12 @@
+---
+title: "collaborator-analysis"
+format: html
+author: Melissa Griffore, Bernardo Costa
+---
+
+
+## Load libraries
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
