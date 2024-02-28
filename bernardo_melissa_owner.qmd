@@ -6,9 +6,7 @@ editor: visual
 ---
 
 ```{r}
-library(dplyr)
-library(tidyr)
-library(readr)
+
 
 
 ```
