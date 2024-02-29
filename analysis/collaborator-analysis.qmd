@@ -2,11 +2,28 @@
 title: "collaborator-analysis"
 format: html
 author: Melissa Griffore, Bernardo Costa
+editor_options: 
+  chunk_output_type: inline
 ---
 
+Load libraries
 
-## Load libraries
+```{r}
 library(readr)
 library(dplyr)
 library(ggplot2)
 library(tidyr)
+```
+
+## Exercise: Explore, Clean, and Wrangle Data
+
+```{r}
+lobster_traps <- read_csv("~/bernardo_melissa/data/Lobster_Trap_Counts_All_Years_20210519.csv")
+```
+
+
+```{r}
+colnames(lobster_traps)
+summary(lobster_traps)
+```
+
