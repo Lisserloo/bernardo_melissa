@@ -29,4 +29,29 @@ not_napl <- lobster_abundance %>%
 aque_70mm <- lobster_abundance %>% 
     filter(SITE == "AQUE" & SIZE_MM >= 70)
 ```
+#visualize data
+#lobster carapace length
+```{r}
+ggplot(data = lobster_abundance, aes(x = SIZE_MM)) +
+    geom_histogram() +
+    facet_wrap(~SITE)
+```
+#group by site and year
+```{r}
+lobsters_summarize <- lobster_abundance %>% 
+  group_by(SITE, YEAR) %>% 
+  summarize(COUNT = n())
+```
+#plot data
+
+```{r}
+# line plot
+ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
+  geom_line(aes(color = SITE)) 
+
+# line and point plot
+ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
+  geom_point(aes(color = SITE)) +
+  geom_line(aes(color = SITE)) + geom_point()
+```
 
