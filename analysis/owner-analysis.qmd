@@ -50,8 +50,12 @@ ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
   geom_line(aes(color = SITE)) 
 
 # line and point plot
-ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
+fig<-ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
   geom_point(aes(color = SITE)) +
   geom_line(aes(color = SITE)) + geom_point()
+```
+
+```{r}
+ggsave("plot/lobster_plot.jpg",fig)
 ```
 
