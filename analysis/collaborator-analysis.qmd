@@ -3,10 +3,10 @@ title: "collaborator-analysis"
 format: html
 author: Melissa Griffore, Bernardo Costa
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
-Load libraries
+## Load libraries
 
 ```{r}
 library(readr)
@@ -27,7 +27,7 @@ colnames(lobster_traps)
 summary(lobster_traps)
 ```
 
-Convert missing values
+### 12.4 Convert missing values using mutate() and na_if()
 ```{r}
 unique(lobster_traps)
 ```
@@ -43,5 +43,27 @@ lobster_traps <- lobster_traps %>%
 unique(lobster_traps$TRAPS)
 summary(lobster_traps)
 ```
+
+
+### 12.5 filter() practice
+```{r}
+not_napl <- lobster_traps %>% 
+  filter(SITE != "NAPL")
+
+
+head(not_napl)
+```
+
+
+```{r}
+# filter to lobsters at carpinteria reef and number of commercial trap floats greater than 20
+
+lobsters_CARP_over20 <- lobster_traps %>% 
+  filter(SITE == "CARP", TRAPS > 20)
+
+head(lobsters_CARP_over20)
+```
+
+
 
 
