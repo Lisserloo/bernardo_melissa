@@ -33,6 +33,7 @@ unique(lobster_traps)
 ```
 
 
+Question 1
 ```{r}
 lobster_traps <- lobster_traps %>%
   mutate(TRAPS = na_if(TRAPS, -99999))
@@ -46,6 +47,8 @@ summary(lobster_traps)
 
 
 ### 12.5 filter() practice
+
+Question 2
 ```{r}
 not_napl <- lobster_traps %>% 
   filter(SITE != "NAPL")
@@ -55,6 +58,7 @@ head(not_napl)
 ```
 
 
+Question 3
 ```{r}
 # filter to lobsters at carpinteria reef and number of commercial trap floats greater than 20
 
@@ -65,5 +69,66 @@ head(lobsters_CARP_over20)
 ```
 
 
+
+Question 7
+```{r}
+# traps by year
+
+traps_year <- lobster_traps
+
+ggplot(lobster_traps, aes(x = TRAPS)) + 
+   geom_histogram() +
+    facet_wrap( ~ YEAR)
+
+ggsave("~/bernardo_melissa/analysis/figs/lobster_traps_year.jpg")
+```
+
+
+Question 8
+```{r}
+## subset
+
+lobsters_summarize <- lobster_traps %>% 
+  group_by(SITE)
+
+## quick check
+unique(lobsters_summarize)
+
+
+## right answer
+
+lobsters_summarize <- traps_year %>% 
+  group_by(SITE, YEAR) %>% 
+  summarize(COUNT = n())
+
+```
+
+```{r}
+## Bernardo's try
+ggplot(lobsters_summarize,
+       aes(x = YEAR, y = TRAPS)) + 
+  geom_line() + 
+  geom_point() +
+  facet_wrap(~ SITE)
+
+
+```
+
+
+```{r}
+## right answer
+
+# line plot
+ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
+  geom_line(aes(color = SITE)) 
+
+# line and point plot
+ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
+  geom_point(aes(color = SITE)) +
+  geom_line(aes(color = SITE)) 
+
+
+ggsave("~/bernardo_melissa/analysis/figs/n_lobsters_by_year_and_site.jpg")
+```
 
 
