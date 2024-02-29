@@ -27,3 +27,21 @@ colnames(lobster_traps)
 summary(lobster_traps)
 ```
 
+Convert missing values
+```{r}
+unique(lobster_traps)
+```
+
+
+```{r}
+lobster_traps <- lobster_traps %>%
+  mutate(TRAPS = na_if(TRAPS, -99999))
+
+```
+
+```{r}
+unique(lobster_traps$TRAPS)
+summary(lobster_traps)
+```
+
+
